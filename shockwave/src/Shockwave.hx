@@ -357,12 +357,18 @@ class Shockwave extends EventDispatcher
 	
 	static private var POOL:Array<Shockwave> = new Array<Shockwave>();
 	
+	/**
+	   Returns an existing Shockwave instance from pool or creates a new one if pool is empty
+	**/
 	static public function fromPool():Shockwave
 	{
 		if (POOL.length != 0) return POOL.pop();
 		return new Shockwave();
 	}
 	
+	/**
+	   Clears shockwave instance and adds it to pool
+	**/
 	static public function toPool(shockwave:Shockwave):Void
 	{
 		shockwave.clear();
