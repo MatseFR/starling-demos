@@ -14,7 +14,6 @@ import starling.events.TouchEvent;
 import starling.events.TouchPhase;
 import starling.filters.DropShadowFilter;
 import starling.filters.FilterChain;
-import starling.filters.GlowFilter;
 import starling.text.TextField;
 import starling.text.TextFieldAutoSize;
 import starling.textures.RenderTexture;

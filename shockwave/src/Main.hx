@@ -4,6 +4,8 @@ import openfl.display.Sprite;
 import openfl.Lib;
 import openfl.display.StageScaleMode;
 import openfl.display3D.Context3DRenderMode;
+import openfl.errors.Error;
+import openfl.geom.Rectangle;
 import openfl.system.Capabilities;
 import openfl.utils.Assets;
 import starling.assets.AssetManager;
@@ -26,10 +28,7 @@ class Main extends Sprite
 	public function new() 
 	{
 		super();
-
-		// Assets:
-		// openfl.Assets.getBitmapData("img/assetname.jpg");
-
+		
 		if (stage != null) start();
 		else addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 	}
@@ -45,10 +44,6 @@ class Main extends Sprite
 
 	private function start():Void
 	{
-		// We develop the game in a *fixed* coordinate system of 320x480. The game might
-		// then run on a device with a different resolution; for that case, we zoom the
-		// viewPort to the optimal size for any display and load the optimal textures.
-
 		Starling.multitouchEnabled = true; // for Multitouch Scene
 
 		_starling = new Starling(ShockwaveDemo, stage, null, null, Context3DRenderMode.AUTO, "auto");
@@ -68,7 +63,6 @@ class Main extends Sprite
 		this.stage.addEventListener(Event.RESIZE, onResize, false, Max.INT_MAX_VALUE, true);
 
 		_starling.start();
-		//initElements();
 	}
 
 	private function loadAssets(onComplete:Void->Void):Void
@@ -87,7 +81,6 @@ class Main extends Sprite
     {
         var demo:ShockwaveDemo = cast(_starling.root, ShockwaveDemo);
         demo.start(_assets);
-        //Timer.delay(removeElements, 150); // delay to make 100% sure there's no flickering.
     }
 	
 	private function onResize(e:openfl.events.Event):Void
